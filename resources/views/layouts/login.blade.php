@@ -27,12 +27,12 @@
             <h1><a><img src="images/main_logo.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p><?php $user = Auth::user(); ?>{{ $user->username }}さん
+                    <p>{{ Auth::user()->username }}さん
                         <img src="images/dawn.png">
                     </p>
                     <div>
                         <ul>
-                            <li><a href="/top">ホーム</a></li>
+                            <li><a href="/index">ホーム</a></li>
                             <li><a href="/profile">プロフィール</a></li>
                             <li><a href="/logout">ログアウト</a></li>
                         </ul>

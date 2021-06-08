@@ -10,13 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-  return view('posts/index');
-});
+Auth::routes();
+//Route::get('/', function () {
+//  return view('layouts/login');
+//});
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+
 
 
 //ログアウト中のページ
@@ -30,7 +30,7 @@ Route::get('/added', 'Auth\RegisterController@added');
 
 
 //ログイン中のページ
-Route::get('/top', 'PostsController@index');
+Route::get('/index', 'PostsController@index');
 
 Route::get('/profile', 'UsersController@profile');
 
