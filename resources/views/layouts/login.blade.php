@@ -28,9 +28,10 @@
             <h1><a href="/index"><img src="images/main_logo.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>{{ Auth::user()->username }}さん
+                    <p><?php $user = Auth::user(); ?>{{$user->username }}<span>さん</span><span>></span>
                         <img src="images/dawn.png">
                     </p>
+
                     <div>
                         <ul>
                             <li><a href="/index">ホーム</a></li>
