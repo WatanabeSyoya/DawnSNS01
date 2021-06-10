@@ -9,6 +9,7 @@
     <title></title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -24,7 +25,7 @@
 <body>
     <header>
         <div id="head">
-            <h1><a><img src="images/main_logo.png"></a></h1>
+            <h1><a href="/index"><img src="images/main_logo.png"></a></h1>
             <div id="">
                 <div id="">
                     <p>{{ Auth::user()->username }}さん
@@ -34,7 +35,7 @@
                         <ul>
                             <li><a href="/index">ホーム</a></li>
                             <li><a href="/profile">プロフィール</a></li>
-                            <li><a href="/logout">ログアウト</a></li>
+                            <li><a href="{{ route('logout') }}">ログアウト</a></li>
                         </ul>
                     </div>
                 </div>

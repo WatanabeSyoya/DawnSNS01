@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    //
-    public function profile(){
+
+
+    public function profile()
+    {
         return view('users.profile');
     }
-    public function search(){
+    public function search()
+    {
         return view('users.search');
     }
 }
