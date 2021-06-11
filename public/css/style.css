@@ -24,3 +24,11 @@ header{
 .gnavi{
     display: none;
 }
+
+.fa-angle-up{
+  color: #fff;
+  display: block;
+  line-height: 60px;
+  padding: 0 1rem;
+  position: relative;
+}
