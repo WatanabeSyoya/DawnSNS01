@@ -20,26 +20,32 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/script.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <div id="head">
-            <h1><a href="/index"><img src="images/main_logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p><?php $user = Auth::user(); ?>{{$user->username }}<span>さん</span><span>></span>
-                        <img src="images/dawn.png">
-                    </p>
-
-                    <div>
+        <div class="head">
+            <h1 class="head-left"><a href="/index"><img src="images/main_logo.png"></a></h1>
+            <div class="head-right">
+                <div class="nav-wrapper">
+                    <div class="nav-menu js-nav-menu">
+                        <p><?php $user = Auth::user(); ?>{{$user->username }}<span>さん</span><i class="fas fa-angle-up"></i>
+                            <img src="images/dawn.png">
+                        </p>
+                    </div>
+                    <div class="gnavi">
                         <ul>
-                            <li><a href="/index">ホーム</a></li>
-                            <li><a href="/profile">プロフィール</a></li>
-                            <li><a href="{{ route('logout') }}">ログアウト</a></li>
+                            <li class="nav-item"><a href="/index">ホーム</a></li>
+                            <li class="nav-item"><a href="/profile">プロフィール</a></li>
+                            <li class="nav-item"><a href="{{ route('logout') }}">ログアウト</a></li>
                         </ul>
                     </div>
                 </div>
+            </div>
+        </div>
     </header>
     <div id="row">
         <div id="container">
