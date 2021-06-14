@@ -15,9 +15,13 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id')->autoIncrement();
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
             $table->string('posts', 500);
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
+            $table->timestamp('created_at')->useCurrent()->nullable();
         });
     }
 
