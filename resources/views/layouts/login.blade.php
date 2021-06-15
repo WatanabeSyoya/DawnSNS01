@@ -39,7 +39,7 @@
                     </div>
                     <div class="gnavi">
                         <ul>
-                            <li class="nav-item"><a href="/index">ホーム</a></li>
+                            <li class="nav-item"><a href="/">ホーム</a></li>
                             <li class="nav-item"><a href="/profile">プロフィール</a></li>
                             <li class="nav-item"><a href="{{ route('logout') }}">ログアウト</a></li>
                         </ul>

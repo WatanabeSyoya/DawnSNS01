@@ -12,12 +12,12 @@
 */
 Auth::routes();
 
-Route::get('/', function () {
-  return view('posts/index');
-});
+//Route::get('/', function () {
+//  return view('posts/index');
+//});
 // Route::get('/home', 'HomeController@index')->name('home');
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 
 Route::get('/register', 'Auth\RegisterController@register');
@@ -27,14 +27,14 @@ Route::get('/added', 'Auth\RegisterController@added');
 
 
 //ログイン中のページ
-Route::get('/index', 'PostsController@index');
+Route::get('/', 'PostsController@index')->name('posts.index');
 
 Route::get('/profile', 'UsersController@profile');
 
-Route::get('/search', 'UsersController@index');
+//Route::get('/search', 'UsersController@index');
 
-Route::get('/follow-list', 'PostsController@index');
-Route::get('/follower-list', 'PostsController@index');
+//Route::get('/follow-list', 'PostsController@index');
+//Route::get('/follower-list', 'PostsController@index');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 

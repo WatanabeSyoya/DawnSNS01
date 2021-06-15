@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Post;
 
 class PostsController extends Controller
 {
@@ -16,7 +17,9 @@ class PostsController extends Controller
 
     public function index()
     {
-        $list = \DB::table('posts')->get();
+        $list = Post::all();
+        $list->load('user');
+
         return view('posts.index', ['list' => $list]);
     }
 
