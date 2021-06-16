@@ -17,9 +17,10 @@ class PostsController extends Controller
 
     public function index()
     {
-        $list = Post::all();
+        $list = Post::orderBy('id', 'desc')->get();
+        //$list = \DB::table('posts')->orderBy('id', 'desc')->get();
+        //dd($list);
         $list->load('user');
-
         return view('posts.index', ['list' => $list]);
     }
 
@@ -30,10 +31,10 @@ class PostsController extends Controller
         $user_id = Auth::id();
 
         \DB::table('posts')->insert([
-            'post' => $post,
+            'posts' => $post,
             'user_id' => $user_id,
         ]);
 
-        return redirect('/index');
+        return redirect('/');
     }
 }
