@@ -29,7 +29,7 @@
 <body>
     <header>
         <div class="head">
-            <h1 class="head-left"><a href="/index"><img src="images/main_logo.png"></a></h1>
+            <h1 class="head-left"><a href="/"><img src="images/main_logo.png"></a></h1>
             <div class="head-right">
                 <div class="nav-wrapper">
                     <div class="nav-menu js-nav-menu">
