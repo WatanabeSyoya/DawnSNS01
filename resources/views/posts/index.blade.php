@@ -10,11 +10,6 @@
   {!! Form::close() !!}
 </div>
 <table class='table table-hover'>
-  <tr>
-    <th>投稿No</th>
-    <th>投稿内容</th>
-    <th>投稿日時</th>
-  </tr>
   @foreach ($list as $list)
   <tr>
     <td><img src="images/{{$list->user->images}}"></td>

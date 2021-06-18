@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+
 
 class UsersController extends Controller
 {
@@ -15,8 +17,9 @@ class UsersController extends Controller
     {
         return view('users.profile');
     }
-    public function search()
+    public function search(Request $request)
     {
-        return view('users.search');
+        dd($request->search);
+        //return view('users.search');
     }
 }
