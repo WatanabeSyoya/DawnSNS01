@@ -2,11 +2,13 @@
 
 @section('content')
 <div class='container'>
-  {!! Form::open(['url' => '/search']) !!}
+  {!! Form::open(['url' => '/result']) !!}
   <div class="">
     {!! Form::input('text', 'search', null, ['required', 'class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
   </div>
-  <input src="images/post.png" type="image" class="btn  pull-right">
+  <button class="btn btn-info" type="submit">
+    <i class="fas fa-search"></i>
+  </button>
   {!! Form::close() !!}
 </div>
 <table class='table table-hover'>

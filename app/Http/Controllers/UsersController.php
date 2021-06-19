@@ -18,17 +18,21 @@ class UsersController extends Controller
         return view('users.profile');
     }
 
-    public function searchForm()
+    public function search()
     {
         $users = User::all();
         return view(
-            'users.searchForm',
+            'users.search',
             ['users' => $users]
         );
     }
-    public function search(Request $request)
+
+    public function result(Request $request)
     {
-        //dd($request->search);
-        return view('users.search');
+        $users = User::where('username', 'like', '%' . $request->search . '%')->get();
+        return view(
+            'users.result',
+            ['users' => $users]
+        );
     }
 }
