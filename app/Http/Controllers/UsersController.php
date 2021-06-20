@@ -30,9 +30,13 @@ class UsersController extends Controller
     public function result(Request $request)
     {
         $users = User::where('username', 'like', '%' . $request->search . '%')->get();
+        $serch_result =  $request->search;
         return view(
             'users.result',
-            ['users' => $users]
+            [
+                'users' => $users,
+                'serch_result' => $serch_result
+            ]
         );
     }
 }

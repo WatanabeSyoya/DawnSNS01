@@ -9,6 +9,7 @@
   <button class="btn btn-info" type="submit">
     <i class="fas fa-search"></i>
   </button>
+  <h5 class="">検索ワード：{{ $serch_result }}</h5>
   {!! Form::close() !!}
 </div>
 <table class='table table-hover'>
@@ -16,7 +17,7 @@
   <tr>
     <td><img src="images/{{$users->images}}"></td>
     <td>{{ $users->username }}</td>
-    <td><a class="btn btn-primary" href="">フォローする</a></td>
+    <td><a class="btn btn-primary" href="/search">フォローする</a></td>
   </tr>
   @endforeach
 </table>
