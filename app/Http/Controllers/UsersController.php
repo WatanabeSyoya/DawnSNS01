@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -30,13 +30,31 @@ class UsersController extends Controller
     public function result(Request $request)
     {
         $users = User::where('username', 'like', '%' . $request->search . '%')->get();
-        $serch_result =  $request->search;
+        $search_result =  $request->search;
         return view(
             'users.result',
             [
                 'users' => $users,
-                'serch_result' => $serch_result
+                'search_result' => $search_result
             ]
         );
+    }
+
+    public function follow($id)
+    {
+        \DB::table('follows')->insert([
+            'follower' => Auth::id(),
+            'follow' => $id,
+        ]);
+        return redirect('/search');
+    }
+
+    public function unfollow($id)
+    {
+        \DB::table('follows')
+            ->where('id', $id)
+            ->delete();
+
+        return redirect('/search');
     }
 }

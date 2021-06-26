@@ -9,7 +9,7 @@
   <button class="btn btn-info" type="submit">
     <i class="fas fa-search"></i>
   </button>
-  <h5 class="">検索ワード：{{ $serch_result }}</h5>
+  <h5 class="">検索ワード：{{ $search_result }}</h5>
   {!! Form::close() !!}
 </div>
 <table class='table table-hover'>

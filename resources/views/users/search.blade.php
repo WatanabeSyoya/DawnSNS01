@@ -12,11 +12,12 @@
   {!! Form::close() !!}
 </div>
 <table class='table table-hover'>
-  @foreach ($users as $user)
+  @foreach ($users as $users)
   <tr>
-    <td><img src="images/{{$user->images}}"></td>
-    <td>{{ $user->username }}</td>
-    <td><a class="btn btn-primary" href="">フォローする</a></td>
+    <td><img src="images/{{$users->images}}"></td>
+    <td>{{ $users->username }}</td>
+    <td><a class="btn btn-primary" href="/user/{{id}}/follow">フォローする</a></td>
+    <td><a class="btn btn-primary" href="/user/{{id}}/unfollow">フォローを外す</a></td>
   </tr>
   @endforeach
 </table>
