@@ -18,26 +18,27 @@ class UsersController extends Controller
         return view('users.profile');
     }
 
-    public function search()
+    public function search(Request $request)
     {
-        $users = User::all();
-        return view(
-            'users.search',
-            ['users' => $users]
-        );
-    }
+        $search_result =  $request->search_result;
+        $searched_user = User::where('username', 'like', '%' . $search_result . '%')->get();
 
-    public function result(Request $request)
-    {
-        $users = User::where('username', 'like', '%' . $request->search . '%')->get();
-        $search_result =  $request->search;
-        return view(
-            'users.result',
-            [
-                'users' => $users,
-                'search_result' => $search_result
-            ]
-        );
+        if (isset($search_result)) {
+            $searched_user = User::where('username', 'like', '%' . $search_result . '%')->get();
+            return view(
+                'users.search',
+                [
+                    'searched_user' => $searched_user,
+                    'search_result' => $search_result
+                ]
+            );
+        } else {
+            $users = User::all();
+            return view(
+                'users.search',
+                ['users' => $users]
+            );
+        }
     }
 
     public function follow($id)

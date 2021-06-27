@@ -34,8 +34,7 @@ Route::get('/', 'PostsController@index')->name('posts.index');
 Route::get('/profile', 'UsersController@profile');
 
 Route::get('/search', 'UsersController@search');
-Route::post('/result', 'UsersController@result');
-
+Route::post('/search', 'UsersController@search');
 
 
 Route::post('/user/{{id}}/follow', 'UsersController@follow');
