@@ -21,33 +21,46 @@ class UsersController extends Controller
     public function search(Request $request)
     {
         $search_result =  $request->search_result;
-        $searched_user = User::where('username', 'like', '%' . $search_result . '%')->get();
+        $id = Auth::user()->id;
+        $follower = \DB::table('follows')->where('follower', $id)->get();
+        $follower_user = [];
+
+        foreach ($follower as $follower_id) {
+            $follower_user[] = $follower_id->follow;
+        }
+
 
         if (isset($search_result)) {
-            $searched_user = User::where('username', 'like', '%' . $search_result . '%')->get();
+            $users = User::where('username', 'like', '%' . $search_result . '%')->get();
             return view(
                 'users.search',
                 [
-                    'searched_user' => $searched_user,
-                    'search_result' => $search_result
+                    'users' => $users,
+                    'search_result' => $search_result,
+                    'follower_user' => $follower_user,
                 ]
             );
         } else {
             $users = User::all();
             return view(
                 'users.search',
-                ['users' => $users]
+                [
+                    'users' => $users,
+                    'follower_user' => $follower_user,
+                ]
             );
         }
     }
 
     public function follow($id)
     {
-        \DB::table('follows')->insert([
+
+        $follow = \DB::table('follows')->insert([
             'follower' => Auth::id(),
             'follow' => $id,
         ]);
-        return redirect('/search');
+
+        return redirect('/users/search');
     }
 
     public function unfollow($id)
@@ -56,6 +69,6 @@ class UsersController extends Controller
             ->where('id', $id)
             ->delete();
 
-        return redirect('/search');
+        return redirect('/users/search');
     }
 }

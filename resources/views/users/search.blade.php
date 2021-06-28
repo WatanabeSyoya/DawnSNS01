@@ -15,12 +15,24 @@
   {!! Form::close() !!}
 
   <table class='table table-hover'>
-    @foreach ($searched_user as $user)
+    @foreach ($users as $user)
     <tr>
       <td><img src="images/{{$user->images}}"></td>
       <td>{{ $user->username }}</td>
-      <td><a class="btn btn-primary" href="/user/{{$user->id}}/follow">フォローする</a></td>
-      <td><a class="btn btn-primary" href="/user/{{$user->id}}/unfollow">フォローを外す</a></td>
+
+      @if(in_array($user->id,$follower_user))
+      <!--  フォロー済みの人だけ表示したい -->
+      <div class="unfollow">
+        <td><button><a class="unfollow" href="/user/{{$user->id}}/unfollow">フォローを外す</a></button><!--  followカラムにある$idを削除する -->
+      </div>
+
+      @else
+      <!--  フォロー済みでない且つ自分自身じゃない -->
+      <div class="follow">
+        <td><button><a class="follow" href="/user/{{$user->id}}/follow">フォローする</a></button>
+      </div>
+
+      @endif
     </tr>
     @endforeach
   </table>
@@ -40,8 +52,17 @@
     <tr>
       <td><img src="images/{{$user->images}}"></td>
       <td>{{ $user->username }}</td>
-      <td><a class="btn btn-primary" href="/user/{{$user->id}}/follow">フォローする</a></td>
-      <td><a class="btn btn-primary" href="/user/{{$user->id}}/unfollow">フォローを外す</a></td>
+
+      @if(in_array($user->id,$follower_user))
+      <div class="unfollow">
+        <td><button><a class="unfollow" href="/user/{{$user->id}}/unfollow">フォローを外す</a></button>
+      </div>
+      @else
+      <div class="follow">
+        <td><button><a class="follow" href="/user/{{$user->id}}/follow">フォローする</a></button>
+      </div>
+      @endif
+
     </tr>
     @endforeach
   </table>

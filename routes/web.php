@@ -10,45 +10,34 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//ログイン
 Auth::routes();
-
-//Route::get('/', function () {
-//  return view('posts/index');
-//});
-// Route::get('/home', 'HomeController@index')->name('home');
-//ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login')->name('login');
-Route::post('/login', 'Auth\LoginController@login');
-
-Route::get('/register', 'Auth\RegisterController@register');
-Route::post('/register', 'Auth\RegisterController@register');
-
+//Route::get('/login', 'Auth\LoginController@login')->name('login');
+//Route::post('/login', 'Auth\LoginController@login');
+//Route::get('/register', 'Auth\RegisterController@register');
+//Route::post('/register', 'Auth\RegisterController@register');
 Route::get('/added', 'Auth\RegisterController@added');
-
 Route::get('/logout', 'Auth\LoginController@logout');
 
-
-//ログイン中のページ
+//投稿
 Route::get('/', 'PostsController@index')->name('posts.index');
-
-Route::get('/profile', 'UsersController@profile');
-
-Route::get('/search', 'UsersController@search');
-Route::post('/search', 'UsersController@search');
-
-
-Route::post('/user/{{id}}/follow', 'UsersController@follow');
-Route::post('/user/{{id}}/unfollow', 'UsersController@unfollow');
-
-
-
-
-Route::get('/follow-list', 'FollowsController@followList');
-Route::get('/follower-list', 'FollowsController@followerList');
-
-
-
 Route::post('post/create', 'PostsController@create');
 Route::get('post/{id}/update-form', 'PostsController@updateForm');
 Route::post('/post/update', 'PostsController@update');
 Route::get('/post/{id}/delete', 'PostsController@delete');
+
+//プロフィール
+Route::get('/profile', 'UsersController@profile');
+
+//検索
+Route::get('/search', 'UsersController@search');
+Route::post('/search', 'UsersController@search');
+
+//フォロー機能
+Route::get('/user/{{id}}/follow', 'UsersController@follow');
+Route::get('/user/{{id}}/unfollow', 'UsersController@unfollow');
+
+//フォローフォロワーリスト
+Route::get('/follow-list', 'FollowsController@followList');
+Route::get('/follower-list', 'FollowsController@followerList');
