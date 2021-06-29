@@ -13,6 +13,7 @@
   @foreach ($list as $list)
   <tr>
     <td><img src="images/{{$list->user->images}}"></td>
+    <td>{{ $list->user->username }}</td>
     <td>{{ $list->posts }}</td>
     <td>{{ $list->created_at }}</td>
     <td><a class="btn btn-primary" href="/post/{{$list->id}}/update-form">更新</a></td>

@@ -31,7 +31,9 @@ class UsersController extends Controller
 
 
         if (isset($search_result)) {
-            $users = User::where('username', 'like', '%' . $search_result . '%')->get();
+            $users = User::where('username', 'like', '%' . $search_result . '%')
+                ->where('id', '!=', Auth::id())
+                ->get();
             return view(
                 'users.search',
                 [
@@ -41,7 +43,7 @@ class UsersController extends Controller
                 ]
             );
         } else {
-            $users = User::all();
+            $users = User::where('id', '!=', Auth::id())->get();
             return view(
                 'users.search',
                 [
@@ -53,12 +55,11 @@ class UsersController extends Controller
     }
 
     public function follow($id)
-    { //ログインしているユーザー
+    {
 
         \DB::table('follows')->insert([
             'follower' => Auth::id(),
             'follow' => $id,
-            //フォローカラムに認証されてるユーザーのIDと自分のIDをfollowsカラムに追加する
         ]);
         return redirect('/search');
     }
