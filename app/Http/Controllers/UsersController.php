@@ -53,22 +53,22 @@ class UsersController extends Controller
     }
 
     public function follow($id)
-    {
+    { //ログインしているユーザー
 
-        $follow = \DB::table('follows')->insert([
+        \DB::table('follows')->insert([
             'follower' => Auth::id(),
             'follow' => $id,
+            //フォローカラムに認証されてるユーザーのIDと自分のIDをfollowsカラムに追加する
         ]);
-
-        return redirect('/users/search');
+        return redirect('/search');
     }
 
     public function unfollow($id)
     {
         \DB::table('follows')
-            ->where('id', $id)
+            ->where('follow', $id)
             ->delete();
 
-        return redirect('/users/search');
+        return redirect('/search');
     }
 }

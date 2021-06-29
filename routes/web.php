@@ -35,8 +35,8 @@ Route::get('/search', 'UsersController@search');
 Route::post('/search', 'UsersController@search');
 
 //フォロー機能
-Route::get('/user/{{id}}/follow', 'UsersController@follow');
-Route::get('/user/{{id}}/unfollow', 'UsersController@unfollow');
+Route::get('/user/{id}/follow', 'UsersController@follow');
+Route::get('/user/{id}/unfollow', 'UsersController@unfollow');
 
 //フォローフォロワーリスト
 Route::get('/follow-list', 'FollowsController@followList');

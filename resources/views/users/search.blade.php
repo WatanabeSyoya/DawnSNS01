@@ -21,13 +21,11 @@
       <td>{{ $user->username }}</td>
 
       @if(in_array($user->id,$follower_user))
-      <!--  フォロー済みの人だけ表示したい -->
       <div class="unfollow">
-        <td><button><a class="unfollow" href="/user/{{$user->id}}/unfollow">フォローを外す</a></button><!--  followカラムにある$idを削除する -->
+        <td><button><a class="unfollow" href="/user/{{$user->id}}/unfollow">フォローを外す</a></button>
       </div>
 
       @else
-      <!--  フォロー済みでない且つ自分自身じゃない -->
       <div class="follow">
         <td><button><a class="follow" href="/user/{{$user->id}}/follow">フォローする</a></button>
       </div>
