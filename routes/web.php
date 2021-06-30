@@ -41,3 +41,6 @@ Route::get('/user/{id}/unfollow', 'UsersController@unfollow');
 //フォローフォロワーリスト
 Route::get('/follow-list', 'FollowsController@followList');
 Route::get('/follower-list', 'FollowsController@followerList');
+
+//ユーザー詳細
+Route::get('/show', 'UsersController@show');

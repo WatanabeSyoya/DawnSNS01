@@ -56,7 +56,6 @@ class UsersController extends Controller
 
     public function follow($id)
     {
-
         \DB::table('follows')->insert([
             'follower' => Auth::id(),
             'follow' => $id,
@@ -69,7 +68,12 @@ class UsersController extends Controller
         \DB::table('follows')
             ->where('follow', $id)
             ->delete();
-
         return redirect('/search');
+    }
+
+    public function show()
+    {
+
+        return view('/show');
     }
 }

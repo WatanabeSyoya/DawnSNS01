@@ -4,7 +4,7 @@
 
 
 <div class="follow_list">
-  <h2>Follow List</h2>
+  <h2>Follow</h2>
 
   <div class="forrow-icon">
     @foreach ($follow_list as $follow_list)

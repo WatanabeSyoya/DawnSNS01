@@ -39,5 +39,20 @@ class FollowsController extends Controller
 
     public function followerList()
     {
+        $id = Auth::user()->id;
+
+        $follow_list = \DB::table('users')
+            ->where('follows.follow', $id)
+            ->leftjoin('follows', 'follows.follow', 'users.id')
+            ->get();
+
+        $list = \DB::table('posts')
+            ->where('follows.follow', $id)
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->leftjoin('follows', 'follows.follow', 'users.id')
+            ->orderby('posts.created_at', 'desc')
+            ->get();
+
+        return view('follows.followerList', compact('list', 'follow_list'));
     }
 }
