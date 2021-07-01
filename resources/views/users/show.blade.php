@@ -16,9 +16,9 @@
             <p>Name</p>{{$user->username}}
           </td>
         </div>
-        <div class="bio">{{$user->bio}}
+        <div class="bio">
           <td>
-            <p>Bio</p>
+            <p>Bio</p>{{$user->bio}}
           </td>
         </div>
       </div>

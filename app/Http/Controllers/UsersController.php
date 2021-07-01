@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -14,10 +15,71 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
-    public function profile()
+    public function profile(Request $request)
     {
-        return view('users.profile');
+        $user = Auth::user();
+
+
+        return view('users.profile', compact('user'));
     }
+
+
+    public function update(Request $request)
+    {
+        $id = Auth::user()->id; //ログインしてる人のID
+        $profile = \DB::table('users')->where('id', $id)->first();
+
+        //入力されたものそれぞれを定義
+        $edit_name = $request->input('username');
+        $edit_mail = $request->input('mail');
+        $edit_password = $request->input('newpassword');
+        $edit_bio = $request->input('bio');
+        $edit_images = $request->file('images');
+
+        $update = $request->input();
+
+
+        if (isset($edit_password) && isset($edit_images)) {
+            $test = $request->file('images')->getClientOriginalName(); //画像の名前指定
+
+            $request->file('images')->storeAs('images', $test, 'public_uploads');
+            \DB::table('users')->where('id', $id)->update([
+                'username' => $edit_name,
+                'mail' => $edit_mail,
+                'password' => $edit_password,
+                'bio' => $edit_bio,
+                'images' => $test,
+            ]);
+        } elseif (isset($edit_password) && !isset($edit_images)) {
+            \DB::table('users')->where('id', $id)->update([
+                'username' => $edit_name,
+                'mail' => $edit_mail,
+                'password' => $edit_password,
+                'bio' => $edit_bio,
+            ]);
+        } elseif (!isset($edit_password) && isset($edit_images)) {
+            $test = $request->file('images')->getClientOriginalName();
+
+            $request->file('images')->storeAs('images', $test, 'public_uploads');
+            \DB::table('users')->where('id', $id)->update([
+                'username' => $edit_name,
+                'mail' => $edit_mail,
+                'bio' => $edit_bio,
+                'images' => $test
+            ]);
+        } else {
+            \DB::table('users')->where('id', $id)->update([
+                'username' => $edit_name,
+                'mail' => $edit_mail,
+                'bio' => $edit_bio,
+            ]);
+        }
+
+
+        return redirect('/');
+    }
+
+
 
     public function search(Request $request)
     {
@@ -94,21 +156,5 @@ class UsersController extends Controller
                 'list' => $list,
             ]
         );
-    }
-
-    public function sshow($user_id)
-    {
-
-
-        $list = \DB::table('posts')
-            ->where('user.id', $user_id)->get();
-
-
-        $list = \DB::table('users')->where('id', $id)->first();
-
-
-
-
-        return view('follows.otherProfile', compact('images', 'id', 'username', 'bio', 'follower', 'follower_user', 'following', 'following_user', 'list', 'other_list'));
     }
 }

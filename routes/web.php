@@ -29,6 +29,7 @@ Route::get('/post/{id}/delete', 'PostsController@delete');
 
 //プロフィール
 Route::get('/profile', 'UsersController@profile');
+Route::post('/profile-update', 'UsersController@update');
 
 //検索
 Route::get('/search', 'UsersController@search');

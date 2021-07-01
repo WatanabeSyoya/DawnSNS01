@@ -15,15 +15,13 @@
 </div>
 
 
-<!--   フォローユーザーの投稿  -->
-
 @foreach ($list as $list)
 <div class="table">
 
   <tr>
 
     <div class="form-icon">
-      <td class="images"><img src="{{ asset('images/'.$list->images) }}"></td>
+      <td class="images"><a href="user/{{$list->user_id}}/show"><img src="{{ asset('images/'.$list->images) }}"></a></td>
     </div>
 
     <div class="form-table">

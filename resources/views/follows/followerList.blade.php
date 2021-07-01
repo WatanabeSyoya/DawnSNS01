@@ -15,8 +15,6 @@
 </div>
 
 
-<!--   フォローユーザーの投稿  -->
-
 @foreach ($list as $list)
 <div class="table">
 
