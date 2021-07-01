@@ -49,7 +49,7 @@ class FollowsController extends Controller
         $list = \DB::table('posts')
             ->where('follows.follow', $id)
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->leftjoin('follows', 'follows.follow', 'users.id')
+            ->leftjoin('follows', 'follows.follower', 'users.id')
             ->orderby('posts.created_at', 'desc')
             ->get();
 

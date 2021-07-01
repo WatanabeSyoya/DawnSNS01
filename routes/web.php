@@ -43,4 +43,4 @@ Route::get('/follow-list', 'FollowsController@followList');
 Route::get('/follower-list', 'FollowsController@followerList');
 
 //ユーザー詳細
-Route::get('/show', 'UsersController@show');
+Route::get('user/{id}/show', 'UsersController@show')->name('users.show');;

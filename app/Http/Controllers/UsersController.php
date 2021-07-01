@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
@@ -71,9 +72,43 @@ class UsersController extends Controller
         return redirect('/search');
     }
 
-    public function show()
+    public function show($id)
+    {
+        $user = \DB::table('users')->where('id', $id)->first();
+        $auth_id = Auth::user()->id;
+
+        $follower = \DB::table('follows')->where('follower', $auth_id)->get();
+        $follower_user = [];
+        foreach ($follower as $follower_id) {
+            $follower_user[] = $follower_id->follow;
+        }
+
+        $list = Post::where('user_id', $id)->get();
+        $list->load('user');
+
+        return view(
+            'users.show',
+            [
+                'user' => $user,
+                'follower_user' => $follower_user,
+                'list' => $list,
+            ]
+        );
+    }
+
+    public function sshow($user_id)
     {
 
-        return view('/show');
+
+        $list = \DB::table('posts')
+            ->where('user.id', $user_id)->get();
+
+
+        $list = \DB::table('users')->where('id', $id)->first();
+
+
+
+
+        return view('follows.otherProfile', compact('images', 'id', 'username', 'bio', 'follower', 'follower_user', 'following', 'following_user', 'list', 'other_list'));
     }
 }

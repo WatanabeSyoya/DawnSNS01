@@ -8,7 +8,7 @@
 
   <div class="forrow-icon">
     @foreach ($follow_list as $follow_list)
-    <a href=""><img src="{{ asset('images/'.$follow_list->images) }}"></a>
+    <a href="user/{{$follow_list->follow}}/show"><img src="{{ asset('images/'.$follow_list->images) }}"></a>
     @endforeach
   </div>
 
