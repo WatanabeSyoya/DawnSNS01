@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+
 
 class UsersController extends Controller
 {
@@ -15,7 +15,7 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
-    public function profile(Request $request)
+    public function profile()
     {
         $user = Auth::user();
 
