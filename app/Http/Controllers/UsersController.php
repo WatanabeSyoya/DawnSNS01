@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use \InterventionImage;
+
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
@@ -26,55 +28,44 @@ class UsersController extends Controller
 
     public function update(Request $request)
     {
-        $id = Auth::user()->id; //ログインしてる人のID
-        $profile = \DB::table('users')->where('id', $id)->first();
+        $id = Auth::user()->id;
 
-        //入力されたものそれぞれを定義
-        $edit_name = $request->input('username');
-        $edit_mail = $request->input('mail');
-        $edit_password = $request->input('newpassword');
-        $edit_bio = $request->input('bio');
-        $edit_images = $request->file('images');
+        $name = $request->input('username');
+        $mail = $request->input('mail');
+        $password = $request->input('newpassword');
+        $bio = $request->input('bio');
+        $filename = $request->file('images')->store('public/image');
+        $images = basename($filename);
 
-        $update = $request->input();
-
-
-        if (isset($edit_password) && isset($edit_images)) {
-            $test = $request->file('images')->getClientOriginalName(); //画像の名前指定
-
-            $request->file('images')->storeAs('images', $test, 'public_uploads');
+        if (isset($password) && isset($images)) {
             \DB::table('users')->where('id', $id)->update([
-                'username' => $edit_name,
-                'mail' => $edit_mail,
-                'password' => $edit_password,
-                'bio' => $edit_bio,
-                'images' => $test,
+                'username' => $name,
+                'mail' => $mail,
+                'password' => $password,
+                'bio' => $bio,
+                'images' => $images,
             ]);
-        } elseif (isset($edit_password) && !isset($edit_images)) {
+        } elseif (isset($password) && !isset($images)) {
             \DB::table('users')->where('id', $id)->update([
-                'username' => $edit_name,
-                'mail' => $edit_mail,
-                'password' => $edit_password,
-                'bio' => $edit_bio,
+                'username' => $name,
+                'mail' => $mail,
+                'password' => $password,
+                'bio' => $bio,
             ]);
-        } elseif (!isset($edit_password) && isset($edit_images)) {
-            $test = $request->file('images')->getClientOriginalName();
-
-            $request->file('images')->storeAs('images', $test, 'public_uploads');
+        } elseif (!isset($password) && isset($images)) {
             \DB::table('users')->where('id', $id)->update([
-                'username' => $edit_name,
-                'mail' => $edit_mail,
-                'bio' => $edit_bio,
-                'images' => $test
+                'username' => $name,
+                'mail' => $mail,
+                'bio' => $bio,
+                'images' => $images,
             ]);
         } else {
             \DB::table('users')->where('id', $id)->update([
-                'username' => $edit_name,
-                'mail' => $edit_mail,
-                'bio' => $edit_bio,
+                'username' => $name,
+                'mail' => $mail,
+                'bio' => $bio,
             ]);
         }
-
 
         return redirect('/');
     }

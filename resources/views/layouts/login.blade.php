@@ -34,7 +34,11 @@
                 <div class="nav-wrapper">
                     <div class="nav-menu js-nav-menu">
                         <p><?php $user = Auth::user(); ?>{{$user->username }}<span>さん</span><i class="fas fa-angle-up"></i>
-                            <img src="images/dawn.png">
+                            @if($user->images == "dawn.png")
+                            <img src="{{ asset('images/'.$user->images) }}">
+                            @else
+                            <img src="{{ asset('storage/image/'.$user->images) }}">
+                            @endif
                         </p>
                     </div>
                     <div class="gnavi">

@@ -12,7 +12,13 @@
 <table class='table table-hover'>
   @foreach ($list as $list)
   <tr>
-    <td><img src="images/{{$list->user->images}}"></td>
+    <td>
+      @if($list->user->images == "dawn.png")
+      <img src="{{ asset('images/'.$list->user->images) }}">
+      @else
+      <img src="{{ asset('storage/image/'.$list->user->images) }}">
+      @endif
+    </td>
     <td>{{ $list->user->username }}</td>
     <td>{{ $list->posts }}</td>
     <td>{{ $list->created_at }}</td>
