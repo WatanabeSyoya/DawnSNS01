@@ -1,20 +1,31 @@
 @extends('layouts.logout')
 
 @section('content')
-<div class="login">
+<div class="login-page">
   {!! Form::open() !!}
 
   <p>DAWNSNSへようこそ</p>
+  <div class="login-form">
+    <div class="form-con">
+      {{ Form::label('Mail Adress') }}
+      {{ Form::text('mail',null,['class' => 'input']) }}
+    </div>
+    <div class="form-con">
+      {{ Form::label('Password') }}
+      {{ Form::password('password',['class' => 'input']) }}
+    </div>
+  </div>
 
-  {{ Form::label('MailAdress') }}
-  {{ Form::text('mail',null,['class' => 'input']) }}
-  {{ Form::label('Psaaword') }}
-  {{ Form::password('password',['class' => 'input']) }}
+  <div class="login-button">
+    {{ Form::submit('LOGIN') }}
+  </div>
 
-  {{ Form::submit('LOGIN') }}
+  <div class="new-user">
+    <p><a href="/register">新規ユーザーの方はこちら</a></p>
+  </div>
 
-  <p><a href="/register">新規ユーザーの方はこちら</a></p>
 
   {!! Form::close() !!}
+
 </div>
 @endsection

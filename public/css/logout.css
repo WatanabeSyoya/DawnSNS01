@@ -17,5 +17,41 @@ font-size: 25px;
 
 }
 .login{
-  background:linear-gradient(to bottom, #00afcc, #a0d8ef);
+ background:linear-gradient(#3C4767 60%,#8b0000);
+}
+ .login-page{
+        margin: 100px auto;
+        width: 180px;
+        background:rgba(0,0,0,0.1);
+        padding: 20px 20px;
+        border-radius: 10px;
+    }
+.login-page p {
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.login-form{
+    color: white;
+    font-size: 15px;
+}
+.form-con{
+margin-bottom: 10px;
+}
+.login-button {
+        display: flex;
+        justify-content: flex-end;
+        border: none;
+        color: #fff;
+
+    }
+.login-button input{
+background-color: #6699FF;
+    }
+.new-user{
+margin-top: 20px;
+}
+.new-user a{
+    color: white;
 }

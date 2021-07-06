@@ -41,7 +41,7 @@ $follower_list = \DB::table('users')
 <body>
     <header>
         <div class="head">
-            <h1 class="head-left"><a href="/"><img class="logo" src="images/main_logo.png"></a></h1>
+            <h1 class="head-left"><a href="/"><img class="logo" src="{{ asset('images/main_logo.png') }}"></a></h1>
             <div class="head-right">
                 <dl class="ac">
                     <dt class="ac-parent">{{$user->username }}<span>さん</span>

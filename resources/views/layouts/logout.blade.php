@@ -23,10 +23,10 @@
     <!--OGPタグ/twitterカード-->
 </head>
 
-<body>
+<body class="login">
 
     <header class="logout_top">
-        <h1><img src="images/main_logo.png"></h1>
+        <h1 class="head-left"><a href="/"><img class="logo" src="{{ asset('images/main_logo.png') }}"></a></h1>
         <p class="logout_top1">Social Network Service</p>
     </header>
     <div id="container">
