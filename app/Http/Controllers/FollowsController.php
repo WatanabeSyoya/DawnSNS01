@@ -41,9 +41,9 @@ class FollowsController extends Controller
     {
         $id = Auth::user()->id;
 
-        $follow_list = \DB::table('users')
+        $follower_list = \DB::table('users')
             ->where('follows.follow', $id)
-            ->leftjoin('follows', 'follows.follow', 'users.id')
+            ->leftjoin('follows', 'follows.follower', 'users.id')
             ->get();
 
         $list = \DB::table('posts')
@@ -53,6 +53,6 @@ class FollowsController extends Controller
             ->orderby('posts.created_at', 'desc')
             ->get();
 
-        return view('follows.followerList', compact('list', 'follow_list'));
+        return view('follows.followerList', compact('list', 'follower_list'));
     }
 }

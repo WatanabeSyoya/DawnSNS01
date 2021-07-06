@@ -17,11 +17,15 @@ class PostsController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
         $list = Post::orderBy('id', 'desc')->get();
         //$list = \DB::table('posts')->orderBy('id', 'desc')->get();
         //dd($list);
         $list->load('user');
-        return view('posts.index', ['list' => $list]);
+        return view('posts.index', [
+            'list' => $list,
+            'user' => $user,
+        ]);
     }
 
     public function create(Request $request)

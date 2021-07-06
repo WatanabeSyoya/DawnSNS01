@@ -9,7 +9,7 @@
     <title></title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/logout.css">
-    <link rel="stylesheet" href="css/app.css">
+
     <link rel="stylesheet" href="css/style.css">
     <!--スマホ<link rel="stylesheet" href="css/logout.css">,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -24,15 +24,18 @@
 </head>
 
 <body>
-    <header>
+
+    <header class="logout_top">
         <h1><img src="images/main_logo.png"></h1>
-        <p>Social Network Service</p>
+        <p class="logout_top1">Social Network Service</p>
     </header>
     <div id="container">
         @yield('content')
     </div>
     <script src="JavaScriptファイルのURL"></script>
     <script src="JavaScriptファイルのURL"></script>
+
+
 </body>
 
 </html>

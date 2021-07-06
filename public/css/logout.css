@@ -7,3 +7,15 @@ body{
     height: 100%;
     background: #3C4767;
 }
+.logout_top{
+text-align: center;
+margin: 100px auto;
+}
+.logout_top1{
+color: white;
+font-size: 25px;
+
+}
+.login{
+  background:linear-gradient(to bottom, #00afcc, #a0d8ef);
+}

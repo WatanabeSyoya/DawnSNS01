@@ -20,6 +20,12 @@ header{
     flex: 0 0 19%;
     border-left: 1px solid #6C6C6C;
 }
+/* ログアウトページ*/
+
+
+
+
+
 
 .gnavi{
     display: none;
@@ -34,8 +40,82 @@ header{
 }
 
 .head{
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    justify-content: flex-end;
     margin: auto 30px;
+}
+.head-left{
+  width: 1200px;
+}
+.head-right{
+    width: 300px;
+}
+.ac-parent{
+
+}
+.image{
+    display: inline;
+    width: 50px;
+    border-radius: 25px;
+    margin: 20px 10px;
+}
+
+.container{
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    display: flex;
+    text-align: center;
+}
+.post_top{
+    width: 80%;
+}
+.logo{
+    width: 150px;
+}
+.top_image{
+    padding: auto;
+}
+.ac-parent {
+	position: relative;  /* 追加 */
+
+    margin-top: 50px;
+	background-color: #3C4767;
+	color: #fff;
+	text-align: center;
+	cursor: pointer;
+}
+
+/* 擬似要素で下三角形を作成 */
+.ac-parent:after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	top: 45%;
+	right: 30px;
+	width: 10px;
+	height: 10px;
+	border-right: 3px solid #fff;
+	border-bottom: 3px solid #fff;
+	transform: translateY(-50%) rotate(45deg);
+	transition: .3s;
+}
+
+/* オープン時にopenクラスを付与 */
+.ac-parent.open:after {
+	transform: rotate(225deg);
+}
+.ac-child {
+  display: none;
+  padding: 2em 1em;
+  background-color: #fff;
+  text-align: center;
+}
+
+.ac-parent{
+    height: 100px;
+
 }

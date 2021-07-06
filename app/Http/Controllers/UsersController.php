@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use \InterventionImage;
-
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
@@ -64,6 +62,7 @@ class UsersController extends Controller
                 'username' => $name,
                 'mail' => $mail,
                 'bio' => $bio,
+                'images' => $images,
             ]);
         }
 

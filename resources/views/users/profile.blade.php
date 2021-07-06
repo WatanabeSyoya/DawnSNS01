@@ -8,7 +8,11 @@
   <tr>
     {{ Form::open(['url' => '/profile-update','files' => true]) }}
     <div class="user-icon">
-      <img src="{{ asset('images/'.$user->images) }}">
+      @if($user->images == "dawn.png")
+      <img class="image" src="{{ asset('images/'.$user->images) }}">
+      @else
+      <img class="image" src="{{ asset('storage/image/'.$user->images) }}">
+      @endif
     </div>
     <div class="user_form">
       <div class="input-form">
