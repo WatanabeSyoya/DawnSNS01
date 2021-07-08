@@ -71,18 +71,18 @@ $follower_list = \DB::table('users')
         <div id="side-bar">
             <div id="confirm">
                 <p>{{$user->username }}さんの</p>
-                <div>
+                <div class="follow">
                     <p>フォロー数</p>
                     <p>{{count($follow_list)}}名</p>
                 </div>
-                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
-                <div>
+                <p class="follow-btn"><a class="btn1" href="/follow-list">フォローリスト</a></p>
+                <div class="follow">
                     <p>フォロワー数</p>
                     <p>{{count($follower_list)}}名</p>
                 </div>
-                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
+                <p class="follow-btn"><a class="btn1" href="/follower-list">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="/search">ユーザー検索</a></p>
+            <p class="btn search-btn"><a class="btn1" href="/search">ユーザー検索</a></p>
         </div>
     </div>
     <footer>

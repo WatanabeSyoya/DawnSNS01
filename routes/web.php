@@ -23,7 +23,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 //投稿
 Route::get('/', 'PostsController@index')->name('posts.index');
 Route::post('post/create', 'PostsController@create');
-Route::get('post/{id}/update-form', 'PostsController@updateForm');
+//Route::get('post/{id}/update-form', 'PostsController@updateForm');
 Route::post('/post/update', 'PostsController@update');
 Route::get('/post/{id}/delete', 'PostsController@delete');
 

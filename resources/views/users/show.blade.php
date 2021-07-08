@@ -22,21 +22,18 @@
           </td>
         </div>
       </div>
-    </div>
 
-    @if(in_array($user->id,$follower_user))
-    <div class="unfollow">
-      <td><button><a class="unfollow_btn" href="/user/{{$user->id}}/unfollow">フォローをはずす</a></button>
+      @if(in_array($user->id,$follower_user))
+      <div class="unfollow">
+        <td><a class="unfollow_btn" href="/user/{{$user->id}}/unfollow">フォローをはずす</a>
+      </div>
+      @else
+      <div class="follow">
+        <td><a class="follow_btn" href="/user/{{$user->id}}/follow">フォローする</a>
+      </div>
+      @endif
     </div>
-    @else
-    <div class="follow">
-      <td><button><a class="follow_btn" href="/user/{{$user->id}}/follow">フォローする</a></button>
-    </div>
-    @endif
-
-
   </tr>
-
 </div>
 
 <div class="table">
@@ -45,10 +42,15 @@
     <div class="form-icon">
       <td class="images"><img src="{{ asset('images/'.$list->user->images) }}"></td>
     </div>
-
-    <td class="username">{{ $list->user->username }}</td>
-    <td class="created_at">{{ $list->created_at}}</td>
-    <td class="posts">{{$list->posts}}</td>
+    <div class="form-icon">
+      <td class="username">{{ $list->user->username }}</td>
+    </div>
+    <div class="form-icon">
+      <td class="posts">{{$list->posts}}</td>
+    </div>
+    <div class="form-icon2">
+      <td class="created_at">{{ $list->created_at}}</td>
+    </div>
   </tr>
   @endforeach
 </div>

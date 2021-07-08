@@ -24,18 +24,18 @@
 </head>
 
 <body class="login">
+    <div class="inner1">
+        <header class="login2">
+            <h1 class="logout_top"><a href="/"><img class="logo" src="{{ asset('images/main_logo.png') }}"></a></h1>
+            <p class="logout_top1">Social Network Service</p>
+        </header>
+        <div id="container">
+            @yield('content')
+        </div>
+        <script src="JavaScriptファイルのURL"></script>
+        <script src="JavaScriptファイルのURL"></script>
 
-    <header class="logout_top">
-        <h1 class="head-left"><a href="/"><img class="logo" src="{{ asset('images/main_logo.png') }}"></a></h1>
-        <p class="logout_top1">Social Network Service</p>
-    </header>
-    <div id="container">
-        @yield('content')
     </div>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
-
-
 </body>
 
 </html>

@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="login-button">
+  <div class="btn--orange1">
     {{ Form::submit('LOGIN') }}
   </div>
 

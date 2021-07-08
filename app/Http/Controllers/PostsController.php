@@ -42,20 +42,14 @@ class PostsController extends Controller
         return redirect('/');
     }
 
-    public function updateForm($id)
-    {
-        $post = \DB::table('posts')
-            ->where('id', $id)
-            ->first();
-        return view('posts.updateForm', compact('post'));
-    }
-
     public function update(Request $request)
     {
+        $user_id = Auth::user();
         $id = $request->input('id');
         $up_post = $request->input('upPost');
+
         \DB::table('posts')
-            ->where('id', $id)
+            ->where('user_id', $user_id)
             ->update(
                 ['posts' => $up_post]
             );

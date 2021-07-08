@@ -18,8 +18,8 @@
   </div>
   {!! Form::close() !!}
 </div>
+@foreach ($list as $list)
 <table class='table table-hover'>
-  @foreach ($list as $list)
   <tr>
     <td>
       @if($list->user->images == "dawn.png")
@@ -31,11 +31,44 @@
     <td>{{ $list->user->username }}</td>
     <td>{{ $list->posts }}</td>
     <td>{{ $list->created_at }}</td>
-    @if($user->id == $list->user_id)
-    <td><a class="btn btn-primary" href="/post/{{$list->id}}/update-form">更新</a></td>
-    <td><a class="btn btn-danger" href="/post/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a></td>
+
+    <!--  更新削除ボタン  -->
+    @if($user->id === $list->user_id)
+    <td><a class="js-modal-open" href="" value='{{$list->id}}'><img src=" images/edit.png"></a></td>
+    <td><a class="danger" href="/post/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" class="trash"></a></td>
     @endif
   </tr>
   @endforeach
+  <!-- モーダルウインドウ -->
+  <div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+      {{ Form::open(['url' => '/post/update']) }}
+      <input type='text' name='upPost' value='{{$list->posts}}'>
+      <input type='hidden' name='id' value='{{$list->user_id}}'>
+
+      <div class="edit">
+        <p>編集画面が表示されると、選択された投稿内容が初期から入っているように<br>最大200文字までとする</p>
+        <div class="modal-img">
+          <input src="images/edit.png" type="image">
+        </div>
+      </div>
+      {{ Form::close() }}
+    </div>
+  </div>
+
 </table>
+<script>
+  $(function() {
+    $('.js-modal-open').on('click', function() {
+      $('.js-modal').fadeIn();
+      return false;
+    });
+    $('.js-modal-close').on('click', function() {
+      $('.js-modal').fadeOut();
+      return false;
+    });
+  });
+</script>
+
 @endsection

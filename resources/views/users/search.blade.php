@@ -21,13 +21,12 @@
       <td>{{ $user->username }}</td>
 
       @if(in_array($user->id,$follower_user))
-      <div class="unfollow">
-        <td><button><a class="unfollow" href="/user/{{$user->id}}/unfollow">フォローを外す</a></button>
+      <div class="unfollow1">
+        <td><a class="unfollow_btn" href="/user/{{$user->id}}/unfollow">フォローを外す</a>
       </div>
-
       @else
-      <div class="follow">
-        <td><button><a class="follow" href="/user/{{$user->id}}/follow">フォローする</a></button>
+      <div class="follow2">
+        <td><a class="follow_btn" href="/user/{{$user->id}}/follow">フォローする</a>
       </div>
 
       @endif
@@ -49,19 +48,14 @@
     @foreach ($users as $user)
     <tr>
       <td><img src="images/{{$user->images}}"></td>
-
-
-
-
       <td>{{ $user->username }}</td>
-
       @if(in_array($user->id,$follower_user))
-      <div class="unfollow">
-        <td><button><a class="unfollow_btn" href="/user/{{$user->id}}/unfollow">フォローをはずす</a></button>
+      <div class="unfollow1">
+        <td><a class="unfollow_btn" href="/user/{{$user->id}}/unfollow">フォローをはずす</a>
       </div>
       @else
-      <div class="follow">
-        <td><button><a class="follow_btn" href="/user/{{$user->id}}/follow">フォローする</a></button>
+      <div class="follow2">
+        <td><a class="follow_btn" href="/user/{{$user->id}}/follow">フォローする</a>
       </div>
       @endif
 
