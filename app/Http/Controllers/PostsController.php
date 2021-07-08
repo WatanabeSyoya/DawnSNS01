@@ -44,12 +44,10 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
-        $user_id = Auth::user();
         $id = $request->input('id');
         $up_post = $request->input('upPost');
-
         \DB::table('posts')
-            ->where('user_id', $user_id)
+            ->where('id', $id)
             ->update(
                 ['posts' => $up_post]
             );
