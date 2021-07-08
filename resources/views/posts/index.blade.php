@@ -34,7 +34,7 @@
 
     <!--  更新削除ボタン  -->
     @if($user->id === $list->user_id)
-    <td><a class="js-modal-open" href="" value='{{$list->id}}'><img src=" images/edit.png"></a></td>
+    <td><a class="js-modal-open" href=""><img src=" images/edit.png"></a></td>
     <td><a class="danger" href="/post/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" class="trash"></a></td>
     <!-- モーダルウインドウ -->
     <div class="modal js-modal">
