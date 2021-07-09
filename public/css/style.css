@@ -96,13 +96,12 @@ header{
 .head{
     width: 95%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     justify-content: flex-end;
     margin: auto 30px;
 }
 .head-left{
-  width: 1200px;
+  width: 1500px;
 }
 .head-right{
     width: 300px;
